@@ -19,7 +19,7 @@ def getSummary(df):
 
 def getTestResults(scores,labels):
     a = pd.DataFrame(zip(scores,labels),columns=['score','label'])
-    a = a.sort('score', ascending = 0)
+    a = a.sort_values(by = 'score', ascending = False)
     a = a.reset_index(drop = True)
     a["population"]=(a.index+1)/float(len(a))
     a["target_population"] = np.cumsum(a["label"])/sum(a["label"])
